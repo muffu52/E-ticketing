@@ -1,0 +1,61 @@
+{% extends "base.html" %} {% block content %}
+    <div class="fh5co-hero">
+        <div class="fh5co-overlay"></div>
+        <div class="fh5co-cover" data-stellar-background-ratio="0.5">
+            <div class="desc">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12">
+                            <div class="tabulation animate-box">
+
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane active" id="flights">
+                                       <div class="row">
+
+
+                                        <table class="table table-striped" style="color:grey;">
+                                            <thead>
+                                              <tr>
+                                                <th scope="col">FLight Id</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Reservation Number</th>
+                                                <th scope="col">Reservation Status</th>
+                                                <th scope="col">Departure Date</th>
+                                                <th scope="col">Arrival Date</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody style="color:grey;">
+                                            {% for q in queryset %}
+                                              <tr>
+                                                <td>{{q.flightschedule.flight.flightNo}}</td>
+                                                <td>{{q.flightschedule.flight.flightName}}</td>
+                                                <td>{{q.reservationNumber}}</td>
+                                                <td>{{q.reservationStatus}}</td>
+                                                <td>{{q.flightschedule.departureTime}}</td>
+                                                <td>{{q.flightschedule.arrivalTime}}</td>
+                                              </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+
+
+
+
+
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

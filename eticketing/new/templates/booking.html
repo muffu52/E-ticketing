@@ -1,0 +1,139 @@
+{% extends "base.html" %} {% block content %}
+<div class="fh5co-hero">
+  <div class="fh5co-overlay">
+    <div
+      class="fh5co-cover"
+      data-stellar-background-ratio="0.5"
+      style="background-image: url(images/cover_bg_1.jpg)"
+    >
+      <div class="desc">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 col-md-12">
+              <div class="tabulation animate-box">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                  <li role="presentation" class="active">
+                    <a
+                      href="#flights"
+                      aria-controls="Ticket Details"
+                      role="tab"
+                      data-toggle="tab"
+                      >Flights</a
+                    >
+                  </li>
+                </ul>
+
+                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane active" id="flights">
+                                        <form method="post">
+                                       {% csrf_token %} 
+                                       <div class="row">
+                                           <div class="col-xxs-12 col-xs-6 mt">
+                                               <div class="input-field">
+                                                   <div style="color:grey;">
+                                                   <label for="from">Flight No:</label>
+                                                   {{queryset.flight.flightNo}}</div>
+                                               </div>
+                                           </div>
+                                           <div class="col-xxs-12 col-xs-6 mt">
+                                               <div class="input-field">
+                                                   <div style="color:grey;">
+                                                   <label for="from">Name</label>
+                                                   {{queryset.flight.flightName}}
+                                                   </div>
+                                               </div>
+                                           </div>
+                                           
+                                           <div class="col-xxs-12 col-xs-6 mt">
+                                               <div class="input-field">
+                                                 <div style="color:grey;">
+                                                   <label for="from">Departure Time</label>
+                                                   {{queryset.departureTime}}</div>
+                                               </div>
+                                           </div>
+                                           <div class="col-xxs-12 col-xs-6 mt">
+                                            <div class="input-field">
+                                                <div style="color:grey;">
+                                                <label for="from">Arrival Time</label>
+                                                {{queryset.arrivalTime}}</div>
+                                            </div>
+                                        </div>
+                                           <div class="col-xxs-12 col-xs-6 mt">
+                                               <div class="input-field">
+                                                   <div style="color:grey;">
+                                                   <label for="from">Duration:</label>
+                                                   {{queryset.flight.duration}} hr</div>
+                                               </div>
+                                           </div>
+                                           
+                                           <div class="col-xxs-12 col-xs-6 mt">
+                                               <div class="input-field">
+                                                   <div style="color:grey;">
+                                                   <label for="from">Total fare</label>
+                                                   {{queryset.fare}} Rs</div>
+                                               </div>
+                                           </div>
+                                           <div class="col-xxs-12 col-xs-6 mt">
+                                            <div class="input-field">
+                                              {{ form.no_adults.errors}}
+                                              <label for="{{ form.no_adults.id_for_label}}"
+                                                >Adult:</label
+                                              >
+                                              <select id="no_adults" name="no_adults" class="cs-select cs-skin-border" for="{{form.no_adults}}">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                              </select>
+                                            </div>
+                                          </div>
+                                          <div class="col-xxs-12 col-xs-6 mt">
+                                            <div class="input-field">
+                                              {{ form.no_children.errors}}
+                                              <label for="{{ form.no_children.id_for_label}}"
+                                                >Children:</label
+                                              >
+                                              <select id="no_children" name="no_children" class="cs-select cs-skin-border" for="{{form.no_children}}">
+                                                <option value="0">0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                
+                                              </select>
+                                            </div>
+                                          </div>
+                                           <div>
+                                               <input type="submit" class="btn btn-primary btn-block" value="Confirm booking">
+                                           </div>
+                                       </div>
+                                       </form>
+                                   </div>
+                               </div>
+
+                                
+                                
+                            </div>
+                        </form>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

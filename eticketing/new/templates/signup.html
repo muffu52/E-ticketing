@@ -1,0 +1,78 @@
+{% extends "base.html" %} {% block content %}
+<div class="fh5co-hero">
+  <div class="fh5co-overlay"></div>
+  <div
+    class="fh5co-cover"
+    data-stellar-background-ratio="0.5"
+    style="background-image: url(images/cover_bg_1.jpg)"
+  >
+    <div class="desc">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-12">
+            <div class="tabulation animate-box">
+              <!-- Nav tabs -->
+              <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active">
+                  <a
+                    href="#flights"
+                    aria-controls="flights"
+                    role="tab"
+                    data-toggle="tab"
+                    >Signup</a
+                  >
+                </li>
+              </ul>
+
+              <!-- Tab panes -->
+              <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="flights">
+				  <form method="post">
+				  {% csrf_token %}
+				  {{ form.non_field_errors }}
+                  <div class="col-xxs-5">
+                    <div class="input-field">
+				      {{ form.username.errors }}
+                      <label for="{{ form.username.id_for_label }}">Username</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="from-place"
+						for="{{form.username}}"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="col-xxs-5">
+                    <div class="input-field">
+					  {{ form.password1.errors }}
+                      <label for="{{ form.password1.id_for_label }}"> Create Password</label>
+                      <input type="password" class="form-control" id="password1" for="{{form.password1}}" />
+                    </div>
+                  </div>
+                  <div class="col-xxs-5">
+                    <div class="input-field">
+					  {{ form.password2.errors }}
+                      <label for="{{ form.password2.id_for_label }}"> Retype Password</label>
+                      <input type="password" class="form-control" id="password2" for="{{form.password2}}" />
+                    </div>
+                  </div>
+                  <br />
+                  <div class="col-xxs-3">
+                    <input
+                      type="submit"
+                      class="btn btn-primary"
+                      value="Submit"
+                    />
+                  </div>
+				  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,185 @@
+{% extends "base.html" %} {% block content %}
+<div class="fh5co-hero">
+  <div class="fh5co-overlay">
+    <div
+      class="fh5co-cover"
+      data-stellar-background-ratio="0.5"
+      style="background-image: url(images/cover_bg_1.jpg)"
+    >
+      <div class="desc">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 col-md-12">
+              <div class="tabulation animate-box">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                  <li role="presentation" class="active">
+                    <a
+                      href="#flights"
+                      aria-controls="flights"
+                      role="tab"
+                      data-toggle="tab"
+                      >Flights</a
+                    >
+                  </li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                  <div role="tabpanel" class="tab-pane active" id="flights">
+                    <!-- <form method="post">
+                      {% csrf_token %}
+                      {{ form }}
+                      <input type="submit" value="Submit">
+                  </form> -->
+                    <form method="post">
+                      {% csrf_token %} {{ form.non_field_errors }}
+                      <div class="row">
+                        <div class="col-xxs-12 col-xs-6 mt">
+                          <div class="input-field">
+                            {{ form.from_place.errors}}
+                            <label for="{{ form.from_place.id_for_label }}"
+                              >From:</label
+                            >
+                            <select
+                              id="from_place"
+                              name="from_place"
+                              class="cs-select cs-skin-border"
+                              for="{{form.from_place}}"
+                            >
+                              {% for a in airports %}
+                              <!-- <option value="" selected disabled hidden>
+                                Select
+                              </option> -->
+                              <option value="{{ a.id}}">{{ a.name }}</option>
+                              {% endfor %}
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-xxs-12 col-xs-6 mt">
+                          <div class="input-field">
+                            {{ form.to_place.errors}}
+                            <label for="{{ form.to_place.id_for_label }}"
+                              >To:</label
+                            >
+                            <select id="to_place" name="to_place" class="cs-select cs-skin-border" for="{{form.to_place}}">
+                              {% for a in airports %}
+                                  <!-- <option value="" selected disabled hidden>Select</option> -->
+                                  <option value="{{ a.id}}">{{ a.name }}</option>
+                              {% endfor %}
+                              </select>
+                          </div>
+                        </div>
+                        <div class="col-xxs-12 col-xs-6 mt ">
+                          <div class="input-field">
+                            {{ form.date.errors}}
+                            <label for="{{ form.date.id_for_label}}"
+                              >Date:</label
+                            >
+                            <input
+                            type="date"
+                            class="form-control"
+                            name="date"
+                            for="{{ form.date }}"
+                          />
+                          </div>
+                        </div>
+                        <div class="col-xxs-12 col-xs-6 mt ">
+                          <div class="input-field">
+                            {{ form.class.errors}}
+                            <label for="{{ form.flight_class.id_for_label}}"
+                              >Class:</label
+                            >
+                            <select
+                              class="cs-select cs-skin-border"
+                              name="flight_class"
+                              for="{{ form.flight_class}}"
+                            >
+                              <!-- <option value="" disabled selected>
+                                Economy
+                              </option> -->
+                              <option value="economy">Economy</option>
+                              <option value="first">First</option>
+                              <option value="business">Business</option>
+                            </select>
+                          </div>
+                        </div>
+                        </div>
+                        <!-- <div class="col-xxs-12 col-xs-6 mt">
+                          <div class="input-field">
+                            {{ form.no_adults.errors}}
+                            <label for="{{ form.no_adults.id_for_label}}"
+                              >Adult:</label
+                            >
+                            <select id="no_adults" name="no_adults" class="cs-select cs-skin-border" for="{{form.no_adults}}">
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6</option>
+                              <option value="7">7</option>
+                              <option value="8">8</option>
+                              <option value="9">9</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-xxs-12 col-xs-6 mt">
+                          <div class="input-field">
+                            {{ form.no_children.errors}}
+                            <label for="{{ form.no_children.id_for_label}}"
+                              >Children:</label
+                            >
+                            <select class="cs-select cs-skin-border" for="{{form.no_children}}">
+                              <option value="0">0</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6</option>
+                              <option value="7">7</option>
+                              <option value="8">8</option>
+                              
+                            </select>
+                          </div>
+                        </div> -->
+                        <div class="col-xs-12 mt">
+                          <input
+                            type="submit"
+                            class="btn btn-primary btn-block"
+                            value="Search Flight"
+                          />
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+      
+  var dglow=document.getElementById("myDIV");
+
+  function showTable(){
+    var style=dglow.style.display;
+      if(style=='block')
+        {
+        dglow.style.display='none';
+        }
+      else{
+        dglow.style.display='block';
+        }    			
+    }
+
+  </script>
+{% endblock %}

@@ -1,0 +1,39 @@
+version: "3"
+services:
+  eticketing:
+    build:
+      context: ./eticketing
+      dockerfile: Dockerfile
+    image: 127.0.0.1:5000/eticketing
+    environment:
+      - PORT=8000
+    env_file:
+      - eticketing/.env
+    ports:
+      - "8000:8000"
+    command: sh -c "chmod +x /app/migrate.sh && sh /app/migrate.sh && /app/entrypoint.sh"
+    networks:
+      - traefik-public
+    volumes:
+      - static:/app/static/
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
+      labels:
+        - "traefik.enable=true"
+        - "traefik.port=8000"
+        - "traefik.http.routers.eticketing.rule=Host(`sad2-a.cs.ait.ac.th`)"
+        - "traefik.http.routers.eticketing.entrypoints=websecure"
+        - "traefik.http.routers.eticketing.tls.certresolver=letsencryptresolver"
+        - "traefik.http.services.eticketing.loadbalancer.server.port=8000"
+volumes:
+  static:
+      external: false
+networks:
+  traefik-public:
+    external: true
+  pgcluster_network:
+    external: true
+  # efk:
+  #   external: true

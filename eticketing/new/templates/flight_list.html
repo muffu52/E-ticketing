@@ -1,0 +1,61 @@
+{% extends "base.html" %} {% block content %}
+    <div class="fh5co-hero">
+        <div class="fh5co-overlay"></div>
+        <div class="fh5co-cover" data-stellar-background-ratio="0.5">
+            <div class="desc">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12">
+                            <div class="tabulation animate-box">
+
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane active" id="flights">
+                                       <div class="row">
+
+
+                                        <table class="table table-striped" style="color:grey;">
+                                            <thead>
+                                              <tr>
+                                                <th scope="col">FLight Id</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Duration</th>
+                                                <th scope="col">Departure Date</th>
+                                                <th scope="col">Arrival Date</th>
+                                                <th scope="col">Action</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody style="color:grey;">
+                                            {% for q in queryset %}
+                                              <tr>
+                                                <td>{{q.flight.flightNo}}</td>
+                                                <td>{{q.flight.flightName}}</td>
+                                                <td>{{q.flight.duration}} hr</td>
+                                                <td>{{q.departureTime}}</td>
+                                                <td>{{q.arrivalTime}}</td>
+                                                <td><a  href="{% url 'book' q.id %}" class="btn btn-primary btn-sm" style="padding-top: 1px; padding-bottom: 2px;">Book Flight</a></td>
+                                              </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+
+
+
+
+
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

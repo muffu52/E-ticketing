@@ -1,0 +1,4 @@
+.venv
+.eticketing/.env
+__pycache__/
+*.pyc
