@@ -1,18 +1,6 @@
 # E-Ticketing-System
 Repository for AT70.18 SAD course project Jan 2022
 
-Team Members
-- Sunsun Kasajoo 
-- Mufaddal Enayath Hussain
-- Vineela Mukkamala
-
-
-Contribution
-
-Sunsun - Server Setup, Database Design, Django application.
-Mufaddal - Server Setup with docker swarm, deployment handling.
-Vineela - Frontend design, database design, django application, JMeter.
-
 Configurations:
 
 
